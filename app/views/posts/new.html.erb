@@ -1,5 +1,3 @@
-<h1>Create New Post</h1>
-<%= form_for @post do |f| %>
-  <%= f.text_area :content, placeholder: 'What\'s on your mind?' %>
-  <%= f.submit 'Post' %>
-<% end %>
+<h3>Create a New Post</h3>
+
+<%= render 'form', post: @post %>

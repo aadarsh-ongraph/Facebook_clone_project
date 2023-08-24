@@ -1,29 +1,39 @@
-<h1>Timeline</h1>
+<div style="width:100%; background-color:wheat; border:3px solid blue;">
+
+ <img src="https://img.freepik.com/premium-vector/blue-social-media-logo_197792-1759.jpg" alt="Facebook" style="width:100px; mergin:0; padding:0">
+  <span style="color:blue; font-family: Arial, Helvetica, sans-serif; letter-spacing:2px; font-size:100px;"> Facebook </span>
+</div>
+
+<h1>Facebook Posts</h1>
 
 <%= render 'posts/form', post: @post %>
 
 <div id="posts">
   <% (@posts + current_user.posts).each do |post| %>
-    <div class="post">
+    <div style="background-color:powderblue; border: 2px solid blue;" class="post">
       <p class="author"><strong>Author:</strong> <%= post.user.email %></p>
       <p class="content"><%= post.content %></p>
       <p class="likes"><strong>Likes:</strong> <%= post.likes.count %></p>
+
       <ul class="actions">
         <li><%= link_to 'Like', post_likes_path(post), data: { turbo_method: :post }, class: 'btn btn-primary' %></li>
         <li><%= link_to 'Comment', new_post_comment_path(post), class: 'btn btn-secondary' %></li>
       </ul>
+
       <h3 class="comments-header">Comments</h3>
+      
       <ul class="comments-list">
         <% post.comments.each do |comment| %>
           <li class="comment">
             <p class="comment-author"><strong><%= comment.user.email %>:</strong></p>
             <p class="comment-content"><%= comment.content %></p>
             <% if comment.user == current_user %>
-              <p><%= link_to 'Delete Comment', post_comment_path(post, comment), method: :delete, class: 'btn btn-danger' %></p>
+              <p><%= link_to 'Delete Comment', post_comment_path(post, comment), data:{"turbo-method": :delete}, class: 'btn btn-danger' %></p>
             <% end %>
           </li>
         <% end %>
       </ul>
+
     </div>
   <% end %>
 </div>

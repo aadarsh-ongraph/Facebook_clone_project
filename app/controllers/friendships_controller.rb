@@ -9,7 +9,13 @@ class FriendshipsController < ApplicationController
       
       redirect_to receiver, notice: 'Friend request sent!'
     end
-  
+    
+    # def create
+    #   @friend = User.find(params[:friend_id])
+    #   current_user.friend_request(@friend)
+    #   redirect_to users_path, notice: 'Friend request sent!'
+    # end
+
     def accept
       friendship = Friendship.find(params[:id])
       friendship.update(status: 'accepted')

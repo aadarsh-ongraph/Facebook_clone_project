@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   devise_for :users
   # resources :users, only: [:index, :show]
 
-  root to: "users#index"
-
+ # root to: "users#index"
+  root to: "posts#index"
   resources :friendships, only: [:create] do
     member do
       post :accept
@@ -41,5 +41,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy, :new] 
   end
-
+  #get "users/show", to: "users#show"
+  #get "users/edit_profile", to: "users#edit_profile"
 end

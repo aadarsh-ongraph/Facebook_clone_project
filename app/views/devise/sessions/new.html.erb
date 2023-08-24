@@ -1,14 +1,15 @@
+<div style="background-color:skyblue; width:30%; height:200px; text-align:center; border:3px solid blue;">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'md-form' }) do |f| %>
   <div class="md-form">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', :style=>"border: 1px solid blue;" %>
   </div>
 
   <div class="md-form">
     <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control' %>
+    <%= f.password_field :password, autocomplete: "current-password", class: 'form-control', :style=>"border: 1px solid blue;" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
@@ -25,6 +26,7 @@
   </div>
 <% end %>
 
+</div>
 <%= render "devise/shared/links" %>
 
 
